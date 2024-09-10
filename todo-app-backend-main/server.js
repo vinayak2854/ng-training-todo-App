@@ -16,9 +16,14 @@ app.use(express.json()); // Parse JSON requests
 app.use('/api', taskRoutes); // Mount task routes under '/api' prefix
 
 // MongoDB connection
-mongoose.connect("mongodb://localhost:27017/todo-app")
+// mongoose.connect('mongodb://localhost:27017/todo-app')
+//   .then(() => console.log('Connected to MongoDB'))
+//   .catch(err => console.error('MongoDB connection error:', err));
+
+mongoose.connect('mongodb://127.0.0.1:27017/todo-app')
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('MongoDB connection error:', err));
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
